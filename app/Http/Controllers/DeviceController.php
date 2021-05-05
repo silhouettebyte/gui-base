@@ -46,7 +46,7 @@ class DeviceController extends Controller
 	{
 		$device = Device::firstOrCreate(
 			['identifier' => $identifier],
-			['status' => 'active']
+			['status' => 'ACTIVE']
 		);
 
 		$telemetry = $device->telemetries()->create([
