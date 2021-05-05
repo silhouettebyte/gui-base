@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('telemetry/{device:identifier}/{attribute}', [\App\Http\Controllers\DeviceController::class, 'telemetry']);
-Route::post('telemetry/{device:identifier}', [\App\Http\Controllers\DeviceController::class, 'acquire']);
+Route::post('telemetry/{identifier}', [\App\Http\Controllers\DeviceController::class, 'acquire']);

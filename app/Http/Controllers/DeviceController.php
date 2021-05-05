@@ -13,8 +13,12 @@ use PhpMqtt\Client\Facades\MQTT;
 
 class DeviceController extends Controller
 {
-    public function show(Device $device)
+    public function show($identifier)
 	{
+		$device = Device::firstOrCreate(
+			['identifier' => $identifier],
+			['status' => 'active']
+		);
 		$columnChartModel =
 			(new ColumnChartModel())
 				->setTitle('Expenses by Type')
