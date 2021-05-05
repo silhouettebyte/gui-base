@@ -13,12 +13,8 @@ use PhpMqtt\Client\Facades\MQTT;
 
 class DeviceController extends Controller
 {
-    public function show($identifier)
+    public function show(Device $device)
 	{
-		$device = Device::firstOrCreate(
-			['identifier' => $identifier],
-			['status' => 'active']
-		);
 		$columnChartModel =
 			(new ColumnChartModel())
 				->setTitle('Expenses by Type')
@@ -46,8 +42,12 @@ class DeviceController extends Controller
 
 	}
 
-	public function acquire(Device $device, Request $request)
+	public function acquire($identifier, Request $request)
 	{
+		$device = Device::firstOrCreate(
+			['identifier' => $identifier],
+			['status' => 'active']
+		);
 
 		$telemetry = $device->telemetries()->create([
 			'bpm' => round($request['bpm'], 2),
