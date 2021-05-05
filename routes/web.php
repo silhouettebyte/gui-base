@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard/devices');
 });
 
 Route::get('dashboard/devices/{device:identifier}', [\App\Http\Controllers\DeviceController::class, 'show']);
