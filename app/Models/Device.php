@@ -9,6 +9,8 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['status', 'identifier'];
+
     public function telemetries()
 	{
 		return $this->hasMany(Telemetry::class);
